@@ -17,10 +17,10 @@ namespace ApplicationCore.Entities
 
         public int CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public Product Category { get; set; }
 
         public int BrandId { get; set; }
 
-        public Brand Brand { get; set; }
+        public Product Brand { get; set; }
     }
 }

@@ -31,6 +31,10 @@ namespace Web
                 options.UseSqlServer(
                     Configuration.GetConnectionString("IdentityConnection")));
 
+            services.AddDbContext<AppIdentityDbContext>(options =>
+              options.UseSqlServer(
+                  Configuration.GetConnectionString("ShopConnection")));
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<AppIdentityDbContext>()

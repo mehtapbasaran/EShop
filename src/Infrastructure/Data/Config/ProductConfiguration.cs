@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Infrastructure.Data.Config
 {
-    public class CategoryConfiguration : IEntityTypeConfiguration<Product>
+    public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
@@ -16,9 +16,21 @@ namespace Infrastructure.Data.Config
                 .ValueGeneratedOnAdd()
                 .IsRequired();
 
-            builder.Property(x => x.CategoryName)
+            builder.Property(x => x.ProductName)
                 .IsRequired()
                 .HasMaxLength(100);
+
+            builder.Property(x => x.UnitPrice)
+                .IsRequired()
+                .HasColumnType("decimal(18, 2)");
+
+            builder.HasOne(x => x.Category)
+                .WithMany()
+                .HasForeignKey(x => x.CategoryId);
+
+            builder.HasOne(x => x.Brand)
+                .WithMany()
+                .HasForeignKey(x => x.BrandId);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Infrastructure.Data.Config
 {
-    public class CategoryConfiguration : IEntityTypeConfiguration<Product>
+    public class BrandConfiguration : IEntityTypeConfiguration<Product>
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
@@ -16,7 +16,7 @@ namespace Infrastructure.Data.Config
                 .ValueGeneratedOnAdd()
                 .IsRequired();
 
-            builder.Property(x => x.CategoryName)
+            builder.Property(x => x.BrandName)
                 .IsRequired()
                 .HasMaxLength(100);
         }
