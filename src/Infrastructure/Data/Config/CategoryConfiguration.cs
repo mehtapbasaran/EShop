@@ -7,11 +7,12 @@ using System.Text;
 
 namespace Infrastructure.Data.Config
 {
-    public class CategoryConfiguration : IEntityTypeConfiguration<Product>
+    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.HasKey(x => x.Id);
+
             builder.Property(x => x.Id)
                 .ValueGeneratedOnAdd()
                 .IsRequired();

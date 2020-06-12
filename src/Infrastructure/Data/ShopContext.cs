@@ -1,10 +1,10 @@
-﻿using System;
+﻿using ApplicationCore.Entities;
+using Infrastructure.Data.Config;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using ApplicationCore.Entities;
-using Infrastructure.Data.Config;
-using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
@@ -15,17 +15,14 @@ namespace Infrastructure.Data
 
         }
 
-        public DbSet<Product> Categories { get; set; }
-
-        public DbSet<Product> Brands { get; set; }
-
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Brand> Brands { get; set; }
         public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            // https://www.learnentityframeworkcore.com/configuration/fluent-api
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }

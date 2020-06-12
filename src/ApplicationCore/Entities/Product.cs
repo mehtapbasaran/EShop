@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
 
 namespace ApplicationCore.Entities
@@ -16,11 +15,9 @@ namespace ApplicationCore.Entities
         public string PhotoPath { get; set; }
 
         public int CategoryId { get; set; }
-
-        public Product Category { get; set; }
+        public Category Category { get; set; }
 
         public int BrandId { get; set; }
-
-        public Product Brand { get; set; }
+        public Brand Brand { get; set; }
     }
 }

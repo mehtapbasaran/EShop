@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Infrastructure.Identity;
+using Infrastructure.Data;
 
 namespace Web
 {
@@ -31,9 +32,9 @@ namespace Web
                 options.UseSqlServer(
                     Configuration.GetConnectionString("IdentityConnection")));
 
-            services.AddDbContext<AppIdentityDbContext>(options =>
-              options.UseSqlServer(
-                  Configuration.GetConnectionString("ShopConnection")));
+            services.AddDbContext<ShopContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("ShopConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddDefaultUI()
@@ -76,4 +77,3 @@ namespace Web
         }
     }
 }
-
