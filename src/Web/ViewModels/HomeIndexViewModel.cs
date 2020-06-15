@@ -14,6 +14,8 @@ namespace Web.ViewModels
 
         public List<SelectListItem> Categories { get; set; }
         public List<SelectListItem> Brands { get; set; }
+        public int? CategoryId { get; set; }
+        public int? BrandId { get; set; }
 
 
 
