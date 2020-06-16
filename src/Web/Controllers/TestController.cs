@@ -15,6 +15,7 @@ namespace Web.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            //var urunler = db.P
             return View(await _categoryRepository.ListAllAsync());
         }
     }
