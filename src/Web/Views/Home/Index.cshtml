@@ -1,19 +1,20 @@
 ﻿@model HomeIndexViewModel
-@{ ViewData["Title"] = "Home Page"; }
-
+@{
+    ViewData["Title"] = "Home Page";
+}
 
 <form method="get">
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <label for="CategoryId">Category</label>
+                <label asp-for="CategoryId">Category</label>
                 <select asp-for="CategoryId" asp-items="Model.Categories" class="form-control" onchange="this.form.submit()">
                 </select>
             </div>
         </div>
         <div class="col">
             <div class="form-group">
-                <label for="BrandId">Brand</label>
+                <label asp-for="BrandId">Brand</label>
                 <select asp-for="BrandId" asp-items="Model.Brands" class="form-control" onchange="this.form.submit()">
                 </select>
             </div>
@@ -21,23 +22,23 @@
     </div>
 </form>
 
-
-
-
-
-@*https://startbootstrap.com/previews/shop-homepage/*@
+if(@Model.Products.Count>0)
+{
+@*https://startbootstrap.com/templates/shop-homepage/*@
 <div class="row">
+
     @foreach (var product in Model.Products)
     {
         <partial name="_ProductPartial" model="product" />
     }
 
-
 </div>
 
-<div>
-    Toplam Sayfa Adedi: @Model.PaginationInfo.TotalPages<br />
-    Şu Anki Sayfa: @Model.PaginationInfo.ActualPage<br />
-    Toplam Öğe Adedi: @Model.PaginationInfo.TotalItems<br />
-    Bu Sayfadaki Öğe Adedi: @Model.PaginationInfo.ItemsOnPage<br />
-</div>
+<partial name="_PaginationPartial" model="Model.PaginationInfo" />
+}
+else
+{
+    <div class="text-center p-5">
+        No products were found matching your selection.
+    </div>
+}
